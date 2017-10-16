@@ -37,7 +37,8 @@ endef
 
 #================#
 
-benchmark_list := $(benchmarks_prog_list)
+skip_tests_list := gem_syslatency
+benchmark_list := $(filter-out $(skip_tests_list),$(benchmarks_prog_list))
 
 ifeq ($(HAVE_LIBDRM_INTEL),true)
     benchmark_list += $(LIBDRM_INTEL_BENCHMARKS)

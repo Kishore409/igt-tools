@@ -60,17 +60,11 @@ $(shell cp $(LOCAL_PATH)/registers/* $(TARGET_OUT_VENDOR)/$(LOCAL_TOOLS_DIR)/reg
 bin_PROGRAMS := $(tools_prog_lists)
 
 skip_tools_list := \
-    intel_framebuffer_dump \
-    intel_guc_logger \
-    intel_l3_parity \
-    intel_reg_dumper \
-    intel_vga_read \
-    intel_vga_write
-
-ifneq ("${ANDROID_HAS_CAIRO}", "1")
-    skip_tools_list += intel_display_crc
-    skip_tools_list += intel_residency
-endif
+                   intel_guc_logger \
+                   intel_reg \
+                   intel_residency \
+                   intel_framebuffer_dump \
+                   intel_display_crc
 
 ifeq ($(HAVE_LIBDRM_INTEL),true)
     bin_PROGRAMS += $(LIBDRM_INTEL_BIN)

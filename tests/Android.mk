@@ -27,9 +27,8 @@ endef
 
 
 # some tests still do not build under android
-skip_tests_list :=
-skip_tests_list += testdisplay        # needs glib.h
-skip_tests_list += pm_rpm
+skip_tests_list := drm_read \
+                   perf
 
 # set local compilation flags for IGT tests
 IGT_LOCAL_CFLAGS += -DHAVE_STRUCT_SYSINFO_TOTALRAM -DANDROID -UNDEBUG
@@ -49,18 +48,17 @@ IGT_LOCAL_SHARED_LIBRARIES := libpciaccess libkmod libdrm libdrm_intel
 
 # handle cairo requirements if it is enabled
 ifeq ("${ANDROID_HAS_CAIRO}", "1")
-    IGT_LOCAL_C_INCLUDES += ${ANDROID_BUILD_TOP}/external/cairo-1.12.16/src
+    IGT_LOCAL_C_INCLUDES += external/cairo/src
     IGT_LOCAL_SHARED_LIBRARIES += libcairo
     IGT_LOCAL_CFLAGS += -DANDROID_HAS_CAIRO=1
 else
 # the following tests depend on cairo, so skip them
     skip_tests_list += \
-    gem_render_copy \
-    pm_lpsp \
-	drm_read \
-	gem_exec_blt \
-	perf \
-	prime_mmap_kms
+                       gem_render_copy \
+                       pm_lpsp \
+	                   prime_mmap_kms \
+                       pm_rpm \
+                       gem_exec_blt
 
 # All kms tests depend on cairo
     tmp_list := $(foreach test_name, $(TESTS_progs),\
