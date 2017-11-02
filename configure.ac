@@ -125,9 +125,9 @@ PKG_CHECK_MODULES(PCIACCESS, [pciaccess >= 0.10])
 PKG_CHECK_MODULES(KMOD, [libkmod])
 PKG_CHECK_MODULES(PROCPS, [libprocps], [procps=yes], [procps=no])
 AM_CONDITIONAL(HAVE_PROCPS, [test "x$procps" = xyes])
-if test x"$procps" = xyes; then
-	AC_DEFINE(HAVE_PROCPS,1,[Enable process managment without shelling out])
-fi
+#if test x"$procps" = xyes; then
+#	AC_DEFINE(HAVE_PROCPS,1,[Enable process managment without shelling out])
+#fi
 PKG_CHECK_MODULES(VALGRIND, [valgrind], [have_valgrind=yes], [have_valgrind=no])
 
 if test x$have_valgrind = xyes; then
@@ -178,9 +178,11 @@ if test x"$udev" = xyes; then
 	AC_DEFINE(HAVE_UDEV,1,[Enable udev-based monitor hotplug detection])
 fi
 PKG_CHECK_MODULES(GLIB, [glib-2.0], [glib=yes], [glib=no])
-if test x"$glib" = xyes; then
-	AC_DEFINE(HAVE_GLIB,1,[Enable glib support])
-fi
+#Commented HAVE_GLIB definition, as not supported on Android
+#May affect test case: chamelium and testdisplay
+#if test x"$glib" = xyes; then
+#	AC_DEFINE(HAVE_GLIB,1,[Enable glib support])
+#fi
 PKG_CHECK_MODULES(GSL, [gsl], [gsl=yes], [gsl=no])
 AM_CONDITIONAL(HAVE_GSL, [test "x$gsl" = xyes])
 

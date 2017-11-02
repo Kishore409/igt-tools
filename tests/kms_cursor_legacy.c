@@ -22,6 +22,8 @@
  *
  */
 
+#include "config.h"
+
 #include <sched.h>
 #include <sys/poll.h>
 

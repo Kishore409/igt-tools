@@ -40,9 +40,14 @@
 #define AVX	0x80
 #define AVX2	0x100
 
-#if defined(__x86_64__)
+/*
+ * As we focus on Intel platform, we revert 2a74ae550842 due to
+ * redefinition error on Android
+ */
+//#if defined(__x86_64__)
 unsigned igt_x86_features(void);
 char *igt_x86_features_to_string(unsigned features, char *line);
+/*
 #else
 static inline unsigned igt_x86_features(void)
 {
@@ -54,5 +59,6 @@ static inline char *igt_x86_features_to_string(unsigned features, char *line)
 	return line;
 }
 #endif
+*/
 
 #endif /* IGT_X86_H */
