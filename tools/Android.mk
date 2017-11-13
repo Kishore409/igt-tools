@@ -22,7 +22,9 @@ define add_tool
     # FIXME: drop once Bionic correctly annotates "noreturn" on pthread_exit
     LOCAL_CFLAGS += -Wno-error=return-type
     # Excessive complaining for established cases. Rely on the Linux version warnings.
-    LOCAL_CFLAGS += -Wno-sign-compare
+    LOCAL_CFLAGS += -Wno-sign-compare -Wno-unused-parameter
+    LOCAL_CFLAGS += -Wno-missing-field-initializers -Wno-macro-redefined
+    LOCAL_CFLAGS += -Wno-absolute-value
     LOCAL_LDFLAGS += -lkmod
     ifeq ($($(1)_LDFLAGS),)
     else

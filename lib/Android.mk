@@ -16,6 +16,9 @@ LOCAL_CFLAGS += -DHAVE_LIBDRM_ATOMIC_PRIMITIVES
 LOCAL_CFLAGS += -DHAVE_STRUCT_SYSINFO_TOTALRAM
 LOCAL_CFLAGS += -DANDROID -DHAVE_LINUX_KD_H
 LOCAL_CFLAGS += -std=gnu99 -UNDEBUG
+LOCAL_CFLAGS += -Wno-sometimes-uninitialized -Wno-unused-parameter
+LOCAL_CFLAGS += -Wno-sign-compare -Wno-missing-field-initializers
+LOCAL_CFLAGS += -Wno-\#warnings
 LOCAL_MODULE:= libintel_gpu_tools
 
 LOCAL_SHARED_LIBRARIES := libpciaccess  \
