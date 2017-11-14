@@ -32,6 +32,19 @@ tests/
 	be run. Some tests have futher options and these are detailed by using
 	the --help option.
 
+        On Android:
+        The test suite can be run using the run_tests_android.sh script available in
+        the scripts directory. run_tests_android.sh has options for running one test list:
+
+          -T <filename>   run tests listed in testlist
+
+        run_tests_android.sh also has options for resuming and excluding tests from test
+
+          -R              resume interrupted test where the partial results are
+                          in the results directory
+          -x <regex>      exclude tests that match the regular expression
+
+        On Linux:
 	The test suite can be run using the run-tests.sh script available in
 	the scripts directory. Piglit is used to run the tests and can either
 	be installed from your distribution (if available), or can be
@@ -130,6 +143,13 @@ docs/
 Requirements
 ------------
 
+On Android:
+All kms test cases are not included in. Because, it depend on cairo lib. If
+you want to build whole test case, you need add cairo and pixman(depended by cairo) lib.
+For details, please refer to Get and Build Dependency Libraries
+at https://wiki.ith.intel.com/display/GSE/IGT+Test+Enabling+on+Android
+
+On Linux:
 This is a non-exhaustive list of package dependencies required for building
 the default configuration (package names may vary):
 
