@@ -36,7 +36,9 @@ IGT_LOCAL_CFLAGS += -include "check-ndebug.h" -std=gnu99
 # FIXME: drop once Bionic correctly annotates "noreturn" on pthread_exit
 IGT_LOCAL_CFLAGS += -Wno-error=return-type
 # Excessive complaining for established cases. Rely on the Linux version warnings.
-IGT_LOCAL_CFLAGS += -Wno-sign-compare
+IGT_LOCAL_CFLAGS += -Wno-sign-compare -Wno-unused-parameter
+IGT_LOCAL_CFLAGS += -Wno-missing-field-initializers -Wno-enum-conversion
+IGT_LOCAL_CFLAGS += -Wno-uninitialized
 
 # set local includes
 IGT_LOCAL_C_INCLUDES = $(LOCAL_PATH)/../lib \

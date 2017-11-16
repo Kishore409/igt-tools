@@ -18,7 +18,8 @@ define add_benchmark
     # FIXME: drop once Bionic correctly annotates "noreturn" on pthread_exit
     LOCAL_CFLAGS += -Wno-error=return-type
     # Excessive complaining for established cases. Rely on the Linux version warnings.
-    LOCAL_CFLAGS += -Wno-sign-compare
+    LOCAL_CFLAGS += -Wno-sign-compare -Wno-unused-parameter
+    LOCAL_CFLAGS += -Wno-enum-conversion -Wno-absolute-value
     LOCAL_LDFLAGS += -lkmod
 
     LOCAL_MODULE := $1_benchmark
